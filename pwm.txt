@@ -1,0 +1,18 @@
+const int analogOutPin = 6;//LED light control
+unsigned char ledLight = 0;
+unsigned int  count = 0;
+unsigned int  tmp = 0;
+
+void setup() {
+
+}
+
+void loop(){
+  ledLight++;
+  if( ledLight % 256 == 0 ){
+    count++;
+    ledLight = 0;
+  }
+  tmp = ( count % 2 == 0 ) ? ledLight : ( 256 - ledLight ); 
+  analogWrite( analogOutPin,tmp );
+}
